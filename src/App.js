@@ -26,6 +26,9 @@ function App() {
         <Fruitbutton name="APPEL"/>
         <Fruitbutton name="SKIWI"/>
 
+        <p/>
+
+
     </div>
   );
 }
