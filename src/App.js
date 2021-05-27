@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useForm } from "react-hook-form";
 import './App.css';
 import Fruitbutton from "./Fruitbutton"
-
-
 
 
 /*Randvoorwaarden fruit-counters
@@ -19,22 +18,76 @@ Kiwi's   : 🥝
 
 
 function App() {
+
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [postcode, setPostcode] = useState("")
+
+    function handleSubmit(event){
+        event.preventDefault()
+        console.log("Dit is ingevuld !!" ,name, email, postcode)
+    }
+
   return (
-    <div className>
+
+
+    <div className = "form-style-6">
       <h1>Fruitmand bezorgservice</h1>
 
-        <Fruitbutton name="BANAAN" />
-        <Fruitbutton name="AARDBEI"/>
-        <Fruitbutton name="APPEL"/>
-        <Fruitbutton name="SKIWI"/>
 
+
+        <Fruitbutton name="🍌 BANAAN"/>
+        <p/>
+        <Fruitbutton name=" 🍓 AARDBEI"/>
+        <p/>
+        <Fruitbutton name=" 🍏 APPEL"/>
+        <p/>
+        <Fruitbutton name=" 🥝 SKIWI"/>
+        <h2>
+            <p></p>
+        </h2>
+        <p/>
         <p/>
 
 
-        <button>RESET</button>
-    {/*  <button onClick={() => setCount[count](0)}>RESET</button>*/}
 
+        <form onSubmit={handleSubmit}>
 
+      <h1>Bestelformulier</h1>
+
+            <label htmlFor="name">Naam </label>
+            <input
+                id="name"
+                name="name"
+                type="tekst"
+                placeholder="Naam"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+            />
+            <p/>
+            <label htmlFor="email">Email </label>
+            <input
+                id="email"
+                name="email"
+                type="tekst"
+                placeholder="Email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+            />
+            <p/>
+            <label htmlFor="postcode">Postcode </label>
+            <input
+                id="postcode"
+                name="postcode"
+                type="tekst"
+                placeholder="Postcode"
+                name={postcode}
+                onChange={(event) => setPostcode(event.target.value)}
+            />
+            <p/>
+                <input type='submit'/>
+
+        </form>
 
     </div>
   );
