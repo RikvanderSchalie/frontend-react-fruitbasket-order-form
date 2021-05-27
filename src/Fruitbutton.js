@@ -1,4 +1,6 @@
 import { useState}  from 'react'
+import { useForm } from "react-hook-form"
+
 
 function  Fruitbutton (props){
 
@@ -6,16 +8,21 @@ function  Fruitbutton (props){
     //een hook is een loop
 
 const [count, setCount] = useState(0)
-
+const { setValue } = useForm();
     return ( <div>
         {props.name} : {count}
             { }
             <button onClick={() => setCount(count + 1)}>+</button>
             <button onClick={() => setCount(count - 1)}>-</button>
-            <button onClick={() => setCount(0)}>reset</button>
-    </div>
 
-    )
+ {/*       {props.testProp} : {count}*/}
+ {/*       { }*/}
+ {/*       <button>TEST</button>*/}
+
+ 
+    </div>)
+
+
 }
 
 export default Fruitbutton

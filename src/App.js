@@ -3,6 +3,8 @@ import './App.css';
 import Fruitbutton from "./Fruitbutton"
 
 
+
+
 /*Randvoorwaarden fruit-counters
 Je maakt gebruik van de useState hook van React om de hoeveelheden bij te houden
 Klanten hebben de vrijheid om te kiezen tussen vier typen fruit:
@@ -21,12 +23,17 @@ function App() {
     <div className>
       <h1>Fruitmand bezorgservice</h1>
 
-        <Fruitbutton name="BANAAN"/>
+        <Fruitbutton name="BANAAN" />
         <Fruitbutton name="AARDBEI"/>
         <Fruitbutton name="APPEL"/>
         <Fruitbutton name="SKIWI"/>
 
         <p/>
+
+
+        <button>RESET</button>
+    {/*  <button onClick={() => setCount[count](0)}>RESET</button>*/}
+
 
 
     </div>
