@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import { useForm } from "react-hook-form";
 import './App.css';
 import Fruitbutton from "./Fruitbutton"
+
 
 
 /*Randvoorwaarden fruit-counters
@@ -17,13 +18,13 @@ Kiwi's   : 🥝
 [] check react-hook npmsite mbt functie formulier */
 
 
-function App() {
+function App(props) {
 
 const {register, handleSubmit} = useForm()
 
-    function logOutput(data) {
+    function logOutput(data, event) {
+    event.preventDefault()
     console.log("DATA UIT FORMULIER", data)
-
     }
 
   return (
@@ -31,7 +32,6 @@ const {register, handleSubmit} = useForm()
 
     <div className = "form-style-6">
       <h1>Fruitmand bezorgservice</h1>
-
 
 
         <Fruitbutton name="🍌 BANAAN"/>
@@ -44,10 +44,13 @@ const {register, handleSubmit} = useForm()
         <h2>
             <p></p>
         </h2>
+
+        <div>
+        <button>RESET</button>
+        </div>
+
         <p/>
         <p/>
-
-
 
         <form onSubmit={handleSubmit(logOutput)}>
 
@@ -69,9 +72,10 @@ const {register, handleSubmit} = useForm()
                 name="email"
                 type="tekst"
                 placeholder="Email"
-                {...register("email")}
-
+                {...register("email",{required: {value: true, message:
+                "Dit veld is verplicht gekkie"}})}
             />
+
             <p/>
             <label htmlFor="postcode">Postcode </label>
             <input
