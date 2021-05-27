@@ -19,13 +19,11 @@ Kiwi's   : 🥝
 
 function App() {
 
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [postcode, setPostcode] = useState("")
+const {register, handleSubmit} = useForm()
 
-    function handleSubmit(event){
-        event.preventDefault()
-        console.log("Dit is ingevuld !!" ,name, email, postcode)
+    function logOutput(data) {
+    console.log("DATA UIT FORMULIER", data)
+
     }
 
   return (
@@ -51,7 +49,7 @@ function App() {
 
 
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(logOutput)}>
 
       <h1>Bestelformulier</h1>
 
@@ -61,8 +59,8 @@ function App() {
                 name="name"
                 type="tekst"
                 placeholder="Naam"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
+                {...register("name")}
+
             />
             <p/>
             <label htmlFor="email">Email </label>
@@ -71,8 +69,8 @@ function App() {
                 name="email"
                 type="tekst"
                 placeholder="Email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                {...register("email")}
+
             />
             <p/>
             <label htmlFor="postcode">Postcode </label>
@@ -81,8 +79,7 @@ function App() {
                 name="postcode"
                 type="tekst"
                 placeholder="Postcode"
-                name={postcode}
-                onChange={(event) => setPostcode(event.target.value)}
+                {...register("postcode")}
             />
             <p/>
                 <input type='submit'/>
@@ -90,7 +87,7 @@ function App() {
         </form>
 
     </div>
-  );
+  )
 }
 
 export default App;
